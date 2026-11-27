@@ -322,7 +322,7 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 @media (max-width: 900px) { .posts { grid-template-columns: 1fr; } }
 
 /* CTA band */
-.cta-band { background: var(--teal); color: #fff; position: relative; overflow: hidden; text-align: center; }
+.cta-band { background: var(--pink); color: #fff; position: relative; overflow: hidden; text-align: center; }
 .cta-band::before { content: ""; position: absolute; right: -120px; top: -140px; width: 380px; height: 380px; border-radius: 50%; background: rgba(255,255,255,.08); }
 .cta-band .wrap { position: relative; padding-block: clamp(56px, 8vw, 90px); display: grid; justify-items: center; gap: 18px; }
 .cta-band h2 { color: #fff; }
