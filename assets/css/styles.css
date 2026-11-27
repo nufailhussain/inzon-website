@@ -1,22 +1,16 @@
 /* INZON shared stylesheet
    Layout: grey top bar, white header with centred logo, full-width colour bands,
-   tall image category cards, split image/content sections, grey CTA band, charcoal footer.
+   tall image category cards, split image/content sections, pink CTA band, charcoal footer.
    Changelog: 2026-11-26 v0.1 first build (home page design system). */
 
-/* INZON palette (neutral greys and off-whites only; pink, teal and navy have been retired).
-   --paper #ffffff / --paper-alt #f5f4f0 / --teal-soft #efede8 / --mint #e4e2dc : backgrounds, lightest to soft grey-beige
-   --sky #d9d7d1 / --line #e3e1dc : dividers and soft fills
-   --teal #5a6068 (mid grey) : top bar, grey bands, accent text and icons (also --pink, --amber, --green map here)
-   --teal-dark #3f444a : hover states      --navy #2b2e33 (charcoal) : buttons, footer, table headers
-   --ink #1f2023 : body text. Variable names are kept from the first build so older rules still work. */
 :root {
   --teal: #5a6068;
   --teal-dark: #3f444a;
   --teal-soft: #efede8;
   --mint: #e4e2dc;
-  --pink: #5a6068;
-  --pink-dark: #3f444a;
-  --pink-soft: #efede8;
+  --pink: #e43a8f;
+  --pink-dark: #c72a77;
+  --pink-soft: #fde8f2;
   --navy: #2b2e33;
   --blue: #3a3f45;
   --sky: #d9d7d1;
@@ -25,8 +19,8 @@
   --line: #e3e1dc;
   --paper: #ffffff;
   --paper-alt: #f5f4f0;
-  --amber: #7a7f86;
-  --green: #4b5058;
+  --amber: #f5b301;
+  --green: #12b981;
 
   --font: "Poppins", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
   --radius: 18px;
@@ -90,8 +84,8 @@ p { margin: 0; }
   transition: transform .15s ease, background .15s ease, color .15s ease;
 }
 .btn:hover { transform: translateY(-2px); }
-.btn-pink { background: var(--navy); color: #fff; }
-.btn-pink:hover { background: var(--teal-dark); }
+.btn-pink { background: var(--pink); color: #fff; }
+.btn-pink:hover { background: var(--pink-dark); }
 .btn-grey { background: var(--navy); color: #fff; }
 .btn-grey:hover { background: var(--teal-dark); }
 .btn-teal { background: var(--teal); color: #fff; }
@@ -425,7 +419,7 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .mission p { max-width: 760px; color: var(--muted); font-size: 1.1rem; }
 .diamonds { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
 .diamonds i { display: block; width: 14px; height: 14px; transform: rotate(45deg); background: #d6d3cc; }
-.diamonds i:nth-child(2) { width: 20px; height: 20px; background: #cfcdc7; }
+.diamonds i:nth-child(2) { width: 20px; height: 20px; background: #f6bfd9; }
 @media (max-width: 1000px) { .offer-cards, .why-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 760px) {
   .about-hero, .story, .mfg { grid-template-columns: 1fr; }
@@ -434,7 +428,7 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 @media (max-width: 480px) { .offer-cards, .why-row { grid-template-columns: 1fr; } }
 
 /* Process band: white panel on the left, flat-lay photo on the right (reference layout) */
-.process-band { display: grid; grid-template-columns: 54% 1fr; padding-left: clamp(0px, 1.8vw, 26px); background: #5a6068 url("../img/stationery-flat-lay-grey.webp") left center / cover no-repeat; }
+.process-band { display: grid; grid-template-columns: 54% 1fr; padding-left: clamp(0px, 1.8vw, 26px); background: #e9587f url("../img/stationery-flat-lay-pink.webp") left center / cover no-repeat; }
 .process-card { background: var(--paper); padding: clamp(28px, 3vw, 40px) clamp(24px, 3vw, 44px); }
 .process-card h2 { text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: clamp(1.9rem, 3.4vw, 3rem); font-weight: 700; line-height: 1.12; letter-spacing: -.01em; margin-bottom: 26px; }
 .process-card .steps li { padding: 22px 18px 24px; gap: 8px; }
@@ -444,7 +438,7 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .process-card .steps p { font-size: .8rem; color: #9a9aa3; line-height: 1.6; max-width: 200px; }
 .process-card .process-cta { margin-top: 22px; }
 .process-card .process-cta .btn { padding-inline: 42px; }
-.process-photo { background: url("../img/stationery-flat-lay-grey.webp") center / cover no-repeat; min-height: 100%; }
+.process-photo { background: url("../img/stationery-flat-lay-pink.webp") center / cover no-repeat; min-height: 100%; }
 @media (max-width: 860px) {
   .process-band { grid-template-columns: 1fr; padding-left: 0; background: var(--paper); }
   .process-photo { min-height: 380px; }
@@ -510,7 +504,7 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 /* Contact link target in footer */
 .footer-contact { scroll-margin: 120px; border-radius: 10px; }
 .footer-contact.flash { animation: contactFlash 1.6s ease 0.4s; }
-@keyframes contactFlash { 0%,100% { box-shadow: 0 0 0 0 rgba(233,88,127,0); } 30% { box-shadow: 0 0 0 10px rgba(90,96,104,.35); } }
+@keyframes contactFlash { 0%,100% { box-shadow: 0 0 0 0 rgba(233,88,127,0); } 30% { box-shadow: 0 0 0 10px rgba(233,88,127,.35); } }
 .quote-side .quote-direct { text-align: center; margin: 18px 0 0; }
 
 /* Hero v2: big product mockup left, headline + tiles right */
@@ -588,5 +582,5 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 /* What We Offer menu targets */
 #categories, #what-we-offer, #private-label { scroll-margin-top: 80px; }
 #bulk-supply { scroll-margin-top: 120px; }
-#bulk-supply:target { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(90,96,104,.35); }
+#bulk-supply:target { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(233,88,127,.35); }
 .catalog-filter .filter-group-label { flex-basis: 100%; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--pink, #d6336c); margin-top: 6px; }
