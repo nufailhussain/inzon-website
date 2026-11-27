@@ -579,3 +579,4 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 #categories, #what-we-offer, #private-label { scroll-margin-top: 80px; }
 #bulk-supply { scroll-margin-top: 120px; }
 #bulk-supply:target { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(233,88,127,.35); }
+.catalog-filter .filter-group-label { flex-basis: 100%; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--pink, #d6336c); margin-top: 6px; }
