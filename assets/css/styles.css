@@ -206,6 +206,22 @@ p { margin: 0; }
 @media (max-width: 1180px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .cat-card { min-height: 380px; } }
 @media (max-width: 760px) { .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .cat-card { min-height: 330px; } .cat-body { padding: 14px; } .cat-body h3 { font-size: 1.08rem; } }
 @media (max-width: 420px) { .cat-grid { grid-template-columns: 1fr; } .cat-card { min-height: 300px; } }
+/* Phones: categories become a swipe carousel of tall photo cards with a pink pill button and dots */
+.cat-dots { display: none; }
+@media (max-width: 760px) {
+  .cat-grid { display: flex; grid-template-columns: none; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; padding: 4px 20px 8px; margin-inline: -20px; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .cat-grid::-webkit-scrollbar { display: none; }
+  .cat-card { flex: 0 0 84%; min-height: 0; aspect-ratio: 3 / 4.3; scroll-snap-align: start; border-radius: 22px; border: 0; }
+  .cat-card:hover, .cat-card:focus-within { transform: none; }
+  .cat-card::after { background: linear-gradient(180deg, rgba(10,16,40,0) 45%, rgba(10,16,40,.35) 65%, rgba(10,16,40,.7) 100%); }
+  .cat-body { padding: 0 20px 22px; gap: 16px; }
+  .cat-body h3 { font-size: 2rem; line-height: 1.1; letter-spacing: -.01em; }
+  .cat-body p { display: none; }
+  .cat-cta { display: block; text-align: center; background: var(--pink); color: #fff; border-radius: 999px; padding: 14px 18px; font-size: 1rem; }
+  .cat-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+  .cat-dots button { width: 10px; height: 10px; padding: 0; border: 0; border-radius: 999px; background: #d6d9e0; cursor: pointer; transition: width .2s ease, background .2s ease; }
+  .cat-dots button.on { width: 28px; background: var(--pink); }
+}
 
 /* Split bands */
 .split { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }

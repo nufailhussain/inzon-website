@@ -10,7 +10,7 @@
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-eWhDEgq8n4+hr36ND84DJFFsMTjpTfievYtpcUtb1Qg='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-eWhDEgq8n4+hr36ND84DJFFsMTjpTfievYtpcUtb1Qg=' 'sha256-gVPe61nhyxUtcAP4jpkdicCKjuDnXhtzb0uqQErfAp4='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INZON | Corporate Gifts, Decor &amp; Branded Merchandise, Kozhikode</title>
@@ -360,6 +360,7 @@
           </div>
         </li>
       </ul>
+      <div class="cat-dots" role="group" aria-label="Categories"></div>
     </div>
   </section>
 
@@ -701,6 +702,27 @@
       target.classList.remove('flash'); void target.offsetWidth; target.classList.add('flash');
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var grid = document.querySelector('.cat-grid'), dotsBox = document.querySelector('.cat-dots');
+  if (!grid || !dotsBox) return;
+  var cards = grid.querySelectorAll('.cat-card'), dots = [];
+  cards.forEach(function (card, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Show ' + card.querySelector('h3').textContent);
+    b.addEventListener('click', function () { grid.scrollTo({ left: card.offsetLeft - grid.offsetLeft - 20, behavior: 'smooth' }); });
+    dotsBox.appendChild(b); dots.push(b);
+  });
+  function update() {
+    var w = cards[0].offsetWidth + 12, i = Math.round(grid.scrollLeft / w);
+    if (grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4) i = cards.length - 1;
+    dots.forEach(function (d, j) { d.classList.toggle('on', j === i); if (j === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+  }
+  grid.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
+  update();
 })();
 </script>
 </body>
