@@ -10,7 +10,7 @@
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-eWhDEgq8n4+hr36ND84DJFFsMTjpTfievYtpcUtb1Qg='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-eWhDEgq8n4+hr36ND84DJFFsMTjpTfievYtpcUtb1Qg=' 'sha256-/ea1EcQFASlaMz04DvEj8dPS1ugiAB+cXhYR8iLeddc='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INZON | Corporate Gifts, Decor &amp; Branded Merchandise, Kozhikode</title>
@@ -222,13 +222,42 @@
 
 <main id="main">
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" aria-labelledby="hero-title">
+  <!-- ===== Hero slider ===== -->
+  <section class="hero-slider" aria-labelledby="hero-title" aria-roledescription="carousel">
+    <div class="slide slide-coral is-active" aria-roledescription="slide" aria-label="1 of 2">
+      <img class="slide-img" src="assets/img/inzon-branded-merchandise-coral-flat-lay.webp" alt="Coral backpack, bottles, notebook, cap and pen, each printed with the INZON logo" width="1920" height="960" fetchpriority="high">
+      <div class="wrap slide-copy">
+        <h1 id="hero-title">Branded gifts your people will actually use.</h1>
+        <a class="btn slide-btn" href="/products/">Explore the catalog &rarr;</a>
+      </div>
+    </div>
+    <div class="slide slide-navy" aria-roledescription="slide" aria-label="2 of 2">
+      <img class="slide-img" src="assets/img/inzon-branded-merchandise-yellow-desk.webp" alt="Yellow tote bag, mug, cap, notebook and bottle with the INZON logo on a wooden desk" width="1920" height="960" loading="lazy">
+      <div class="wrap slide-copy">
+        <p class="slide-title">Your logo on merchandise, supplied in bulk across Kerala.</p>
+        <a class="btn slide-btn" href="#quote">Request a quote &rarr;</a>
+      </div>
+    </div>
+    <div class="slider-dots" role="group" aria-label="Choose slide">
+      <button type="button" aria-label="Show slide 1" aria-pressed="true"></button>
+      <button type="button" aria-label="Show slide 2" aria-pressed="false"></button>
+    </div>
+  </section>
+
+  <!-- ===== Intro (answer-first summary) ===== -->
+  <section class="hero-intro" aria-label="About INZON in brief">
     <div class="wrap">
       <div>
-        <span class="eyebrow" style="color:var(--navy)">Corporate gifts &middot; Decor items &middot; Kozhikode (Calicut), Kerala</span>
-        <h1 id="hero-title">Branded gifts your people will <em>actually use</em></h1>
+        <span class="eyebrow">Corporate gifts &middot; Decor items &middot; Kozhikode (Calicut), Kerala</span>
         <p class="hero-answer">INZON is a B2B corporate gifting and promotional merchandise supplier based in Kozhikode (Calicut), Kerala. INZON brands gift sets, bottles, bags, apparel, pens, caps, umbrellas and clocks with your logo, and supplies decor items such as wall art, lamps, artificial plants and planters, for companies and institutions ordering in bulk. You approve a digital mockup before anything is produced.</p>
+      </div>
+      <div class="hero-intro-side">
+        <ul class="hero-facts" aria-label="INZON at a glance">
+            <li>Corporate gifts and decor items</li>
+            <li>Logo mockup before production</li>
+            <li>Supplier to 50+ hypermarkets</li>
+            <li>Minimum order 100 units</li>
+          </ul>
         <div class="hero-ctas">
           <a class="btn btn-pink" href="#quote">Request a quote</a>
           <a class="btn btn-ghost" href="https://wa.me/919746203482">
@@ -236,18 +265,6 @@
             WhatsApp us
           </a>
         </div>
-        <ul class="hero-facts" aria-label="INZON at a glance">
-          <li>Corporate gifts and decor items</li>
-          <li>Logo mockup before production</li>
-          <li>Supplier to 50+ hypermarkets</li>
-          <li>Minimum order 100 units</li>
-        </ul>
-      </div>
-      <div class="hero-mosaic">
-        <figure><img src="assets/img/custom-logo-wooden-wall-clock.webp" alt="Wooden-frame wall clock with a space for a company logo and name on the dial" width="736" height="736"></figure>
-        <figure><img src="assets/img/smart-temperature-display-bottles.webp" alt="Smart steel bottles with temperature display lids in pastel colours" width="736" height="732"></figure>
-        <figure><img src="assets/img/embroidered-logo-black-cap.webp" alt="Black cap with an embroidered white logo on a desk" width="735" height="919"></figure>
-        <figure><img src="assets/img/branded-golf-and-folding-umbrellas.webp" alt="Navy golf umbrella and folding umbrella printed with a logo" width="736" height="736"></figure>
       </div>
     </div>
   </section>
@@ -700,6 +717,28 @@
       target.classList.remove('flash'); void target.offsetWidth; target.classList.add('flash');
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var root = document.querySelector('.hero-slider');
+  if (!root) return;
+  var slides = root.querySelectorAll('.slide');
+  var dots = root.querySelectorAll('.slider-dots button');
+  var i = 0, timer = null;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function go(n) {
+    i = (n + slides.length) % slides.length;
+    slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); s.setAttribute('aria-hidden', k === i ? 'false' : 'true'); });
+    dots.forEach(function (d, k) { d.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+  }
+  function start() { if (!still) { stop(); timer = setInterval(function () { go(i + 1); }, 6000); } }
+  function stop() { if (timer) clearInterval(timer); timer = null; }
+  dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); start(); }); });
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusin', stop);
+  go(0); start();
 })();
 </script>
 </body>
