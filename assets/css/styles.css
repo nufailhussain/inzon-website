@@ -86,8 +86,6 @@ p { margin: 0; }
 .btn:hover { transform: translateY(-2px); }
 .btn-pink { background: var(--pink); color: #fff; }
 .btn-pink:hover { background: var(--pink-dark); }
-.btn-grey { background: var(--navy); color: #fff; }
-.btn-grey:hover { background: var(--teal-dark); }
 .btn-teal { background: var(--teal); color: #fff; }
 .btn-teal:hover { background: var(--teal-dark); }
 .btn-ghost { border-color: currentColor; color: var(--navy); background: transparent; }
