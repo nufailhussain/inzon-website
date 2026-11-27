@@ -187,7 +187,7 @@ p { margin: 0; }
 }
 
 /* Category cards */
-.cat-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; list-style: none; padding: 0; margin: 0; }
+.cat-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; list-style: none; padding: 0; margin: 0; }
 .cat-card {
   position: relative; border-radius: var(--radius); overflow: hidden; background: #222;
   min-height: 400px; display: flex; flex-direction: column; justify-content: flex-end;
