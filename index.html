@@ -10,7 +10,7 @@
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-gzQGIh317nEfyfkWbMdfzikYa3royqB6lh5h0QOx/8I='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-K+GEFvgaBl8kboNnM4xeFv59WiNDQJhRUMBAaithdew='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INZON | Corporate Gifts, Decor &amp; Branded Merchandise, Kozhikode</title>
@@ -688,7 +688,7 @@
         if (!h3 || !im || !cat) return;
         var c = cat.textContent.trim();
         if (!by[c]) { by[c] = []; groups.push(c); }
-        by[c].push({ title: h3.textContent.trim(), src: new URL(im.getAttribute('src'), base).pathname });
+        by[c].push({ title: h3.textContent.trim(), src: new URL(im.getAttribute('src'), base).href });
       });
       if (!groups.length) return;
       var mixed = pitems.querySelector('.pick-mixed'), keep = mixed ? mixed.parentNode : null;
