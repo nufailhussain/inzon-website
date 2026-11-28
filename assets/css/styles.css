@@ -618,3 +618,32 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   .hero-text .hero-facts { grid-row: 6; }
   .hero-text .hero-facts li { background: var(--teal-soft); }
 }
+
+/* Desktop and tablet (761px and wider): same look as phones — bottle photo hero on soft grey, category photo tiles with short lines */
+@media (min-width: 761px) {
+  .hero { background: #cbd4db; }
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 0; }
+  .hero-mosaic { display: none; }
+  .hero-text { position: relative; display: flex; flex-direction: column; justify-content: center; min-height: clamp(480px, 46vw, 640px); padding: 56px 46% 56px 0; }
+  .hero-m-photo { display: block; position: absolute; right: 0; top: 0; width: 44%; height: 100%; object-fit: cover; object-position: center 45%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 18%, #000 88%, transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 18%, #000 88%, transparent 100%); }
+  .hero-text h1 { font-size: clamp(2.4rem, 4.2vw, 3.6rem); line-height: 1.08; }
+  .hero-text .hero-ctas .btn { border-radius: 999px; }
+  .hero-text .hero-facts li { background: rgba(255,255,255,.7); }
+
+  .cat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .cat-card { min-height: 0; aspect-ratio: 1 / 1.1; border-radius: 8px; border: 0; }
+  .cat-card:nth-child(6n+1), .cat-card:nth-child(6n+2) { grid-column: span 2; aspect-ratio: 16 / 10; }
+  .cat-card::after { background: linear-gradient(180deg, rgba(10,16,40,0) 40%, rgba(10,16,40,.6) 72%, rgba(10,16,40,.88) 100%); }
+  .cat-body { padding: 0 20px 20px; gap: 6px; }
+  .cat-body h3 { font-size: 1.35rem; line-height: 1.15; }
+  .cat-card:nth-child(6n+1) .cat-body h3, .cat-card:nth-child(6n+2) .cat-body h3 { font-size: 2rem; }
+  .cat-body p:not(.cat-short), .cat-cta { display: none; }
+  .cat-short { display: block; font-size: .9rem !important; line-height: 1.45; color: rgba(255,255,255,.92); }
+  .cat-card:nth-child(6n+1) .cat-short, .cat-card:nth-child(6n+2) .cat-short { font-size: 1rem !important; }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .hero-text { padding-right: 44%; }
+  .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cat-card:nth-child(6n+1), .cat-card:nth-child(6n+2) { grid-column: 1 / -1; }
+}
