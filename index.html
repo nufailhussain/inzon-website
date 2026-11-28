@@ -10,7 +10,7 @@
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-eWhDEgq8n4+hr36ND84DJFFsMTjpTfievYtpcUtb1Qg='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-7gZ/kL+CNwBavqvjssS8kNzgLf7LfmX/bytyJozoeew='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INZON | Corporate Gifts, Decor &amp; Branded Merchandise, Kozhikode</title>
@@ -584,11 +584,15 @@
         <div class="field"><label for="q-company">Company name</label><input id="q-company" name="company" type="text" autocomplete="organization" required></div>
         <div class="field"><label for="q-phone">Phone / WhatsApp</label><input id="q-phone" name="phone" type="tel" autocomplete="tel" required></div>
         <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email"></div>
-        <div class="field"><label for="q-product">Product</label>
-          <select id="q-product" name="product">
-            <option value="">Choose a category</option>
-            <option>Gift sets</option><option>Bottles</option><option>Laptop bags</option><option>T-shirts &amp; polos</option><option>Engraved pens</option><option>Keychains</option><option>Caps</option><option>Umbrellas</option><option>Wall clocks</option><option>Home &amp; lifestyle</option><option>Study tables</option><option>Decor items</option><option>Mixed / not sure yet</option>
-          </select></div>
+        <div class="field"><label for="q-category">Category</label>
+          <select id="q-category" name="category"><option value="">Choose a category</option><option>Gift sets and kits</option><option>Bottles and flasks</option><option>Bags</option><option>T-shirts and polos</option><option>Caps</option><option>Pens</option><option>Keychains</option><option>Wall and table clocks</option><option>Study tables</option><option>Home and lifestyle</option><option>Wall art and mirrors</option><option>Macrame wall hangings</option><option>Table decor</option><option>Table lamps</option><option>Artificial plants</option><option>Planters and vases</option><option>Key holders</option><option>Storage and organisers</option><option>Mixed / not sure yet</option></select></div>
+        <div class="field picker"><label id="q-product-label">Product</label>
+          <input type="hidden" id="q-product" name="product" value="">
+          <button type="button" class="pick-btn" id="q-product-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="q-product-label q-product-btn" disabled><span class="pick-cur">Choose a category first</span><span class="pick-caret" aria-hidden="true"></span></button>
+          <div class="pick-panel" id="q-product-list" role="group" aria-labelledby="q-product-label" hidden>
+            <input type="search" class="pick-search" id="q-product-search" placeholder="Search in this category" aria-label="Search products in this category" autocomplete="off" hidden>
+            <ul class="pick-list" id="q-product-items"></ul>
+          </div></div>
         <div class="field"><label for="q-qty">Quantity</label><input id="q-qty" name="qty" type="number" min="100" step="1" inputmode="numeric" placeholder="e.g. 250" required></div>
         <div class="field"><label for="q-date">Needed by</label><input id="q-date" name="date" type="date"></div>
         <div class="field full"><label for="q-msg">Branding and other details</label><textarea id="q-msg" name="msg" rows="3" placeholder="Logo colours, items per kit, delivery locations in Kerala"></textarea></div>
@@ -646,8 +650,78 @@
 (function () {
   var form = document.getElementById('quote-form');
   var select = document.getElementById('q-product');
+  var catSel = document.getElementById('q-category');
+  var pbtn = document.getElementById('q-product-btn'), plist = document.getElementById('q-product-list');
+  var pitems = document.getElementById('q-product-items'), psearch = document.getElementById('q-product-search');
+  var CATALOG_URL = '/products/', data = null, dataP = null, item = '';
+  function setValue() {
+    var c = catSel.value;
+    select.value = !c ? '' : (item && c !== 'Mixed / not sure yet') ? item + ' (' + c + ')' : c;
+  }
+  function setCur(text, thumb) {
+    var cur = pbtn.querySelector('.pick-cur'); cur.textContent = text;
+    var old = pbtn.querySelector('img'); if (old) old.remove();
+    if (thumb) { var im = thumb.cloneNode(); im.removeAttribute('loading'); pbtn.insertBefore(im, cur); }
+  }
+  function closeList() { plist.hidden = true; pbtn.setAttribute('aria-expanded', 'false'); }
+  // The categories and items come from the Products page, so anything added to the catalog shows up here automatically.
+  function getData() {
+    if (dataP) return dataP;
+    dataP = fetch(CATALOG_URL).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (t) {
+      var doc = new DOMParser().parseFromString(t, 'text/html'), base = new URL(CATALOG_URL, location.href), order = [], by = {};
+      doc.querySelectorAll('.catalog-card').forEach(function (card) {
+        var h3 = card.querySelector('h3'), im = card.querySelector('img'), cat = card.querySelector('.cc-cat');
+        if (!h3 || !im || !cat) return;
+        var c = cat.textContent.trim();
+        if (!by[c]) { by[c] = []; order.push(c); }
+        by[c].push({ title: h3.textContent.trim(), src: new URL(im.getAttribute('src'), base).href });
+      });
+      if (!order.length) throw 0;
+      data = by;
+      var keep = catSel.value;
+      catSel.textContent = '';
+      [['', 'Choose a category']].concat(order.map(function (c) { return [c, c]; }), [['Mixed / not sure yet', 'Mixed / not sure yet']]).forEach(function (p) {
+        var o = document.createElement('option'); if (p[0]) o.value = p[0]; o.textContent = p[1]; catSel.appendChild(o);
+      });
+      catSel.value = keep; return by;
+    }).catch(function () { dataP = null; return null; });
+    return dataP;
+  }
+  function renderItems(c) {
+    pitems.textContent = ''; psearch.value = ''; item = ''; setCur('Choose a product', null);
+    var list = (data && data[c]) || [];
+    list.forEach(function (it) {
+      var li = document.createElement('li'), b = document.createElement('button'), img = document.createElement('img'), s = document.createElement('span');
+      b.type = 'button'; b.className = 'pick-opt';
+      img.src = it.src; img.alt = ''; img.width = 44; img.height = 44; img.loading = 'lazy';
+      s.textContent = it.title; b.appendChild(img); b.appendChild(s); li.appendChild(b); pitems.appendChild(li);
+      b.addEventListener('click', function () { item = it.title; setCur(it.title, img); setValue(); closeList(); pbtn.focus(); });
+    });
+    psearch.hidden = list.length < 10;
+    pbtn.disabled = !list.length;
+    if (!list.length) setCur(c && c !== 'Mixed / not sure yet' ? 'Products load when you are online' : (c ? 'Not needed, we will help you choose' : 'Choose a category first'), null);
+  }
+  catSel.addEventListener('focus', getData);
+  catSel.addEventListener('pointerdown', getData);
+  catSel.addEventListener('change', function () {
+    closeList(); setValue();
+    var c = catSel.value;
+    if (!c || c === 'Mixed / not sure yet') { renderItems(c); return; }
+    pbtn.disabled = true; setCur('Loading products...', null);
+    getData().then(function () { if (catSel.value === c) { renderItems(c); setValue(); } });
+  });
+  psearch.addEventListener('input', function () {
+    var q = psearch.value.trim().toLowerCase();
+    Array.prototype.forEach.call(pitems.children, function (li) { li.hidden = !!q && li.textContent.toLowerCase().indexOf(q) < 0; });
+  });
+  pbtn.addEventListener('click', function () {
+    var open = plist.hidden; plist.hidden = !open; pbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open && !psearch.hidden) psearch.focus({ preventScroll: true });
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.picker')) closeList(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !plist.hidden) { closeList(); pbtn.focus(); } });
   document.querySelectorAll('[data-product]').forEach(function (a) {
-    a.addEventListener('click', function () { if (select) select.value = a.getAttribute('data-product'); });
+    a.addEventListener('click', function () { var v = a.getAttribute('data-product'); catSel.value = v; setValue(); });
   });
   if (!form) return;
   form.addEventListener('submit', function (e) {
