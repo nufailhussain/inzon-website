@@ -601,14 +601,14 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 /* Mobile hero: full-bleed product photo with the headline and buttons laid over its lower part (phones only) */
 .hero-m-photo { display: none; }
 @media (max-width: 760px) {
-  .hero { background: linear-gradient(180deg, #d7c8b8 0, #d7c8b8 1000px, #fff 1200px); }
-  .hero .wrap { padding-block: 0 36px; gap: 0; }
+  .hero { background: linear-gradient(180deg, #e6cba9 0, #e6cba9 1000px, #fff 1200px); }
+  .hero .wrap { padding-block: 0 72px; gap: 0; }
   .hero-mosaic { display: none; }
-  .hero-text { display: grid; grid-template-columns: 1fr; grid-template-rows: 58vw auto auto auto auto auto; position: relative; margin-inline: -20px; }
+  .hero-text { display: grid; grid-template-columns: 1fr; grid-template-rows: 120vw auto auto auto auto auto; position: relative; margin-inline: -20px; }
   .hero-text > * { grid-column: 1; margin-inline: 20px; position: relative; z-index: 2; }
-  .hero-m-photo { display: block; grid-row: 1 / 5; margin: 0 !important; z-index: 0 !important; width: 100%; height: 100%; object-fit: contain; object-position: center top; background: #d7c8b8; }
+  .hero-m-photo { display: block; grid-row: 1 / 5; margin: 0 !important; z-index: 0 !important; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; background: #e6cba9; }
   .hero-text::before { content: ""; grid-column: 1; grid-row: 1 / 5; z-index: 1; position: relative;
-    background: linear-gradient(180deg, rgba(215,200,184,0) calc(58vw - 14px), #d7c8b8 58vw); }
+    background: linear-gradient(180deg, rgba(230,203,169,0) calc(120vw - 16vw), #e6cba9 120vw); }
   .hero-text .eyebrow { grid-row: 2; margin-top: -4px; margin-bottom: 8px; font-size: .7rem; letter-spacing: .14em; }
   .hero-text h1 { grid-row: 3; font-size: clamp(2rem, 9vw, 2.5rem); line-height: 1.12; letter-spacing: -.01em; }
   .hero-text .hero-ctas { grid-row: 4; margin-top: 20px; padding-bottom: 30px; flex-wrap: nowrap; gap: 10px; }
@@ -621,12 +621,12 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 
 /* Desktop and tablet (761px and wider): same look as phones — bottle photo hero on soft grey, category photo tiles with short lines */
 @media (min-width: 761px) {
-  .hero { background: #d7c8b8; position: relative; }
+  .hero { background: #e6cba9; position: relative; }
   .hero .wrap { grid-template-columns: 1fr; padding-block: 0; }
   .hero-mosaic { display: none; }
-  .hero-text { display: flex; flex-direction: column; justify-content: center; min-height: max(430px, 33.5vw); padding: 40px max(0px, calc(58vw - (100vw - 100%) / 2 + 24px)) 40px 0; }
-  .hero-m-photo { display: block; position: absolute; right: 0; top: 0; width: 58vw; height: 100%; object-fit: cover; object-position: 50% center;
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%); mask-image: linear-gradient(to right, transparent 0, #000 8%); }
+  .hero-text { display: flex; flex-direction: column; justify-content: center; min-height: clamp(560px, 46vw, 700px); padding: 48px max(0px, calc(44vw - (100vw - 100%) / 2 + 28px)) 72px 0; }
+  .hero-m-photo { display: block; position: absolute; right: 0; top: 0; width: 44vw; height: 100%; object-fit: cover; object-position: 50% 28%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%), linear-gradient(to bottom, #000 78%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 12%), linear-gradient(to bottom, #000 78%, transparent 100%); mask-composite: intersect; }
   .hero-text h1 { font-size: clamp(2.2rem, 3.6vw, 3.3rem); line-height: 1.08; }
   .hero-text .hero-ctas .btn { border-radius: 999px; }
   .hero-text .hero-facts li { background: rgba(255,255,255,.7); }
@@ -643,7 +643,6 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   .cat-card.big-d .cat-short { font-size: 1rem !important; }
 }
 @media (min-width: 761px) and (max-width: 1000px) {
-  .hero-m-photo { object-position: 3% center; }
   .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cat-card.big-d { grid-column: auto; aspect-ratio: 1 / 1.1; }
   .cat-card.big-d .cat-body h3 { font-size: 1.35rem; }
@@ -681,7 +680,11 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   .band-blue .split-body > div { grid-column: 1; grid-row: 4; padding: 0 12px 0 16px; }
 }
 
-/* Hero colours follow the corporate gifts photo: warm beige, near-black and brown */
-.hero h1 { color: #211c17; }
-.hero-answer { color: #3d342c; }
-.hero .eyebrow { color: #6b5a47 !important; }
+/* Hero colours follow the purple and gold gift set photo: warm sand, deep purple, gold */
+.hero h1 { color: #2b1d4e; }
+.hero-answer { color: #3b2f55; }
+.hero .eyebrow { color: #5b3f86 !important; }
+.hero .btn-ghost { border-color: #2b1d4e; color: #2b1d4e; }
+/* soft sweep from the hero into the white section below */
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 84px; background: linear-gradient(180deg, rgba(230,203,169,0), #fff); pointer-events: none; z-index: 1; }
+.hero-text > :not(img) { position: relative; z-index: 2; }
