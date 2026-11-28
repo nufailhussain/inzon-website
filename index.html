@@ -10,7 +10,7 @@
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-uRsTt+qcu/YU50NX/DP2n53GaPj3ujRJpOROrZa95r8='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INZON | Corporate Gifts, Decor &amp; Branded Merchandise, Kozhikode</title>
@@ -640,118 +640,7 @@
 <a class="wa-float" href="https://wa.me/919746203482" aria-label="WhatsApp INZON">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3 3 3 0 00-.9 2.2 5.2 5.2 0 001.1 2.7 11.8 11.8 0 004.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 001.8-1.2 2.2 2.2 0 00.2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
 </a>
-<script>
-(function () {
-  var form = document.getElementById('quote-form');
-  var select = document.getElementById('q-product');
-  var catSel = document.getElementById('q-category');
-  var pbtn = document.getElementById('q-product-btn'), plist = document.getElementById('q-product-list');
-  var pitems = document.getElementById('q-product-items'), psearch = document.getElementById('q-product-search');
-  var CATALOG_URL = '/products/', data = null, dataP = null, item = '';
-  function setValue() {
-    var c = catSel.value;
-    select.value = !c ? '' : (item && c !== 'Mixed / not sure yet') ? item + ' (' + c + ')' : c;
-  }
-  function setCur(text, thumb) {
-    var cur = pbtn.querySelector('.pick-cur'); cur.textContent = text;
-    var old = pbtn.querySelector('img'); if (old) old.remove();
-    if (thumb) { var im = thumb.cloneNode(); im.removeAttribute('loading'); pbtn.insertBefore(im, cur); }
-  }
-  function closeList() { plist.hidden = true; pbtn.setAttribute('aria-expanded', 'false'); }
-  // The categories and items come from the Products page, so anything added to the catalog shows up here automatically.
-  function getData() {
-    if (dataP) return dataP;
-    dataP = fetch(CATALOG_URL).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (t) {
-      var doc = new DOMParser().parseFromString(t, 'text/html'), base = new URL(CATALOG_URL, location.href), order = [], by = {};
-      doc.querySelectorAll('.catalog-card').forEach(function (card) {
-        var h3 = card.querySelector('h3'), im = card.querySelector('img'), cat = card.querySelector('.cc-cat');
-        if (!h3 || !im || !cat) return;
-        var c = cat.textContent.trim();
-        if (!by[c]) { by[c] = []; order.push(c); }
-        by[c].push({ title: h3.textContent.trim(), src: new URL(im.getAttribute('src'), base).href });
-      });
-      if (!order.length) throw 0;
-      data = by;
-      var keep = catSel.value;
-      catSel.textContent = '';
-      [['', 'Choose a category']].concat(order.map(function (c) { return [c, c]; }), [['Mixed / not sure yet', 'Mixed / not sure yet']]).forEach(function (p) {
-        var o = document.createElement('option'); if (p[0]) o.value = p[0]; o.textContent = p[1]; catSel.appendChild(o);
-      });
-      catSel.value = keep; return by;
-    }).catch(function () { dataP = null; return null; });
-    return dataP;
-  }
-  function choose(it, img) { item = it.title; setCur(it.title, img); setValue(); }
-  function renderItems(c) {
-    pitems.textContent = ''; psearch.value = ''; item = ''; setCur('Choose a product', null);
-    var list = (data && data[c]) || [];
-    list.forEach(function (it) {
-      var li = document.createElement('li'), b = document.createElement('button'), img = document.createElement('img'), s = document.createElement('span');
-      b.type = 'button'; b.className = 'pick-opt';
-      img.src = it.src; img.alt = ''; img.width = 44; img.height = 44; img.loading = 'lazy';
-      s.textContent = it.title; b.appendChild(img); b.appendChild(s); li.appendChild(b); pitems.appendChild(li);
-      b.addEventListener('click', function () { choose(it, img); closeList(); pbtn.focus(); });
-    });
-    psearch.hidden = list.length < 10;
-    pbtn.disabled = !list.length;
-    if (!list.length) setCur(c && c !== 'Mixed / not sure yet' ? 'Products load when you are online' : (c ? 'Not needed, we will help you choose' : 'Choose a category first'), null);
-  }
-  // Arriving from a catalog item's quote link (?category=...&product=...): pre-select both fields.
-  (function () {
-    var qp = new URLSearchParams(location.search), c = qp.get('category'), p = qp.get('product');
-    if (!c) return;
-    getData().then(function () {
-      var opt = Array.prototype.filter.call(catSel.options, function (o) { return o.value === c; })[0];
-      if (!opt) return;
-      catSel.value = c; setValue();
-      if (data && data[c]) {
-        renderItems(c);
-        data[c].forEach(function (it, i) {
-          if (it.title === p) choose(it, pitems.children[i].querySelector('img'));
-        });
-      }
-      catSel.scrollIntoView({ block: 'center' });
-    });
-  })();
-  catSel.addEventListener('focus', getData);
-  catSel.addEventListener('pointerdown', getData);
-  catSel.addEventListener('change', function () {
-    closeList(); setValue();
-    var c = catSel.value;
-    if (!c || c === 'Mixed / not sure yet') { renderItems(c); return; }
-    pbtn.disabled = true; setCur('Loading products...', null);
-    getData().then(function () { if (catSel.value === c) { renderItems(c); setValue(); } });
-  });
-  psearch.addEventListener('input', function () {
-    var q = psearch.value.trim().toLowerCase();
-    Array.prototype.forEach.call(pitems.children, function (li) { li.hidden = !!q && li.textContent.toLowerCase().indexOf(q) < 0; });
-  });
-  pbtn.addEventListener('click', function () {
-    var open = plist.hidden; plist.hidden = !open; pbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (open && !psearch.hidden) psearch.focus({ preventScroll: true });
-  });
-  document.addEventListener('click', function (e) { if (!e.target.closest('.picker')) closeList(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !plist.hidden) { closeList(); pbtn.focus(); } });
-  document.querySelectorAll('[data-product]').forEach(function (a) {
-    a.addEventListener('click', function () { var v = a.getAttribute('data-product'); catSel.value = v; setValue(); });
-  });
-  if (!form) return;
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var f = form.elements, err = document.getElementById('q-error');
-    var qty = parseInt(f.qty.value, 10);
-    if (!f.category.value || !(qty >= 100)) {
-      err.textContent = !f.category.value ? 'Please choose a category.' : 'The minimum order quantity is 100 units.';
-      err.hidden = false; return;
-    }
-    err.hidden = true;
-    var lines = ['Quote request for INZON',
-      'Product: ' + (f.product.value || 'Not chosen'), 'Quantity: ' + qty,
-      f.date.value ? 'Needed by: ' + f.date.value : ''].filter(Boolean);
-    window.open('https://wa.me/919746203482?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
-  });
-})();
-</script>
+<script src="/assets/js/quote-form.js" defer></script>
 <script>
 (function () {
   var header = document.querySelector('.site-header');
