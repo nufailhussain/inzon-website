@@ -709,10 +709,10 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   .cat-grid > .cat-card:nth-child(1) { order: 1; }   /* Gift sets (big) */
   .cat-grid > .cat-card:nth-child(2) { order: 2; }   /* Bottles */
   .cat-grid > .cat-card:nth-child(3) { order: 3; }   /* Umbrellas */
-  .cat-grid > .cat-card:nth-child(4) { order: 4; }   /* T-shirts */
+  .cat-grid > .cat-card:nth-child(10) { order: 4; }  /* Wall clocks (small) */
   .cat-grid > .cat-card:nth-child(5) { order: 5; }   /* Pens */
   .cat-grid > .cat-card:nth-child(9) { order: 6; }   /* Laptop bags (big) */
-  .cat-grid > .cat-card:nth-child(10) { order: 7; }  /* Wall clocks (big) */
+  .cat-grid > .cat-card:nth-child(4) { order: 7; }   /* T-shirts (big) */
   .cat-grid > .cat-card:nth-child(6) { order: 8; }   /* Keychains */
   .cat-grid > .cat-card:nth-child(7) { order: 9; }   /* Caps */
   .cat-grid > .cat-card:nth-child(8) { order: 10; }  /* Study tables */
