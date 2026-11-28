@@ -10,7 +10,7 @@
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-K+GEFvgaBl8kboNnM4xeFv59WiNDQJhRUMBAaithdew='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-7gZ/kL+CNwBavqvjssS8kNzgLf7LfmX/bytyJozoeew='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INZON | Corporate Gifts, Decor &amp; Branded Merchandise, Kozhikode</title>
@@ -584,26 +584,14 @@
         <div class="field"><label for="q-company">Company name</label><input id="q-company" name="company" type="text" autocomplete="organization" required></div>
         <div class="field"><label for="q-phone">Phone / WhatsApp</label><input id="q-phone" name="phone" type="tel" autocomplete="tel" required></div>
         <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email"></div>
+        <div class="field"><label for="q-category">Category</label>
+          <select id="q-category" name="category"><option value="">Choose a category</option><option>Gift sets and kits</option><option>Bottles and flasks</option><option>Bags</option><option>T-shirts and polos</option><option>Caps</option><option>Pens</option><option>Keychains</option><option>Wall and table clocks</option><option>Study tables</option><option>Home and lifestyle</option><option>Wall art and mirrors</option><option>Macrame wall hangings</option><option>Table decor</option><option>Table lamps</option><option>Artificial plants</option><option>Planters and vases</option><option>Key holders</option><option>Storage and organisers</option><option>Mixed / not sure yet</option></select></div>
         <div class="field picker"><label id="q-product-label">Product</label>
           <input type="hidden" id="q-product" name="product" value="">
-          <button type="button" class="pick-btn" id="q-product-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="q-product-label q-product-btn"><span class="pick-cur">Choose a product</span><span class="pick-caret" aria-hidden="true"></span></button>
+          <button type="button" class="pick-btn" id="q-product-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="q-product-label q-product-btn" disabled><span class="pick-cur">Choose a category first</span><span class="pick-caret" aria-hidden="true"></span></button>
           <div class="pick-panel" id="q-product-list" role="group" aria-labelledby="q-product-label" hidden>
-            <input type="search" class="pick-search" id="q-product-search" placeholder="Search products" aria-label="Search products" autocomplete="off">
-            <ul class="pick-list" id="q-product-items">
-<li><button type="button" class="pick-opt pick-mixed" data-value="Mixed / not sure yet"><span class="pick-ph" aria-hidden="true">+</span><span>Mixed / not sure yet</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Gift sets"><img src="assets/img/brown-leather-wallet-keychain-pen-and-glasses-case-set.webp" alt="" width="44" height="44" loading="lazy"><span>Gift sets</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Bottles"><img src="assets/img/smart-temperature-display-bottles.webp" alt="" width="44" height="44" loading="lazy"><span>Bottles</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Umbrellas"><img src="assets/img/branded-golf-and-folding-umbrellas.webp" alt="" width="44" height="44" loading="lazy"><span>Umbrellas</span></button></li>
-<li><button type="button" class="pick-opt" data-value="T-shirts &amp; polos"><img src="assets/img/custom-printed-tshirts-and-polo.webp" alt="" width="44" height="44" loading="lazy"><span>T-shirts &amp; polos</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Engraved pens"><img src="assets/img/engraved-black-metal-pens.webp" alt="" width="44" height="44" loading="lazy"><span>Engraved pens</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Keychains"><img src="assets/img/engraved-metal-leather-wooden-keychains.webp" alt="" width="44" height="44" loading="lazy"><span>Keychains</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Caps"><img src="assets/img/embroidered-logo-black-cap.webp" alt="" width="44" height="44" loading="lazy"><span>Caps</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Study tables"><img src="assets/img/catalog/foldable-kids-study-table-and-chair-oak.webp" alt="" width="44" height="44" loading="lazy"><span>Study tables</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Laptop bags"><img src="assets/img/leather-laptop-bags-black-navy.webp" alt="" width="44" height="44" loading="lazy"><span>Laptop bags</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Wall clocks"><img src="assets/img/rose-gold-black-wall-clock.webp" alt="" width="44" height="44" loading="lazy"><span>Wall clocks</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Home &amp; lifestyle"><img src="assets/img/marble-finish-soap-dispensers.webp" alt="" width="44" height="44" loading="lazy"><span>Home &amp; lifestyle</span></button></li>
-<li><button type="button" class="pick-opt" data-value="Decor items"><img src="assets/img/catalog/gold-leaf-metal-wall-frames-set-of-three.webp" alt="" width="44" height="44" loading="lazy"><span>Decor items</span></button></li>
-            </ul>
+            <input type="search" class="pick-search" id="q-product-search" placeholder="Search in this category" aria-label="Search products in this category" autocomplete="off" hidden>
+            <ul class="pick-list" id="q-product-items"></ul>
           </div></div>
         <div class="field"><label for="q-qty">Quantity</label><input id="q-qty" name="qty" type="number" min="100" step="1" inputmode="numeric" placeholder="e.g. 250" required></div>
         <div class="field"><label for="q-date">Needed by</label><input id="q-date" name="date" type="date"></div>
@@ -662,72 +650,78 @@
 (function () {
   var form = document.getElementById('quote-form');
   var select = document.getElementById('q-product');
+  var catSel = document.getElementById('q-category');
   var pbtn = document.getElementById('q-product-btn'), plist = document.getElementById('q-product-list');
   var pitems = document.getElementById('q-product-items'), psearch = document.getElementById('q-product-search');
-  var CATALOG_URL = '/products/', loaded = false;
-  function pick(val, thumb) {
-    select.value = val;
-    var cur = pbtn.querySelector('.pick-cur');
-    cur.textContent = val || 'Choose a product';
+  var CATALOG_URL = '/products/', data = null, dataP = null, item = '';
+  function setValue() {
+    var c = catSel.value;
+    select.value = !c ? '' : (item && c !== 'Mixed / not sure yet') ? item + ' (' + c + ')' : c;
+  }
+  function setCur(text, thumb) {
+    var cur = pbtn.querySelector('.pick-cur'); cur.textContent = text;
     var old = pbtn.querySelector('img'); if (old) old.remove();
     if (thumb) { var im = thumb.cloneNode(); im.removeAttribute('loading'); pbtn.insertBefore(im, cur); }
   }
   function closeList() { plist.hidden = true; pbtn.setAttribute('aria-expanded', 'false'); }
-  function bindOpt(b) {
-    b.addEventListener('click', function () { pick(b.getAttribute('data-value'), b.querySelector('img')); closeList(); pbtn.focus(); });
-  }
-  pitems.querySelectorAll('.pick-opt').forEach(bindOpt);
-  // The full item list comes from the Products page, so new catalog items show up here automatically.
-  function loadCatalog() {
-    if (loaded) return; loaded = true;
-    fetch(CATALOG_URL).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (t) {
-      var doc = new DOMParser().parseFromString(t, 'text/html');
-      var base = new URL(CATALOG_URL, location.href), groups = [], by = {};
+  // The categories and items come from the Products page, so anything added to the catalog shows up here automatically.
+  function getData() {
+    if (dataP) return dataP;
+    dataP = fetch(CATALOG_URL).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (t) {
+      var doc = new DOMParser().parseFromString(t, 'text/html'), base = new URL(CATALOG_URL, location.href), order = [], by = {};
       doc.querySelectorAll('.catalog-card').forEach(function (card) {
         var h3 = card.querySelector('h3'), im = card.querySelector('img'), cat = card.querySelector('.cc-cat');
         if (!h3 || !im || !cat) return;
         var c = cat.textContent.trim();
-        if (!by[c]) { by[c] = []; groups.push(c); }
+        if (!by[c]) { by[c] = []; order.push(c); }
         by[c].push({ title: h3.textContent.trim(), src: new URL(im.getAttribute('src'), base).href });
       });
-      if (!groups.length) return;
-      var mixed = pitems.querySelector('.pick-mixed'), keep = mixed ? mixed.parentNode : null;
-      pitems.textContent = '';
-      if (keep) pitems.appendChild(keep);
-      groups.forEach(function (c) {
-        var head = document.createElement('li'); head.className = 'pick-head'; head.textContent = c; pitems.appendChild(head);
-        by[c].forEach(function (it) {
-          var li = document.createElement('li'), b = document.createElement('button'), img = document.createElement('img'), s = document.createElement('span');
-          b.type = 'button'; b.className = 'pick-opt'; b.setAttribute('data-value', it.title + ' (' + c + ')');
-          img.src = it.src; img.alt = ''; img.width = 44; img.height = 44; img.loading = 'lazy';
-          s.textContent = it.title; b.appendChild(img); b.appendChild(s); li.appendChild(b); pitems.appendChild(li); bindOpt(b);
-        });
+      if (!order.length) throw 0;
+      data = by;
+      var keep = catSel.value;
+      catSel.textContent = '';
+      [['', 'Choose a category']].concat(order.map(function (c) { return [c, c]; }), [['Mixed / not sure yet', 'Mixed / not sure yet']]).forEach(function (p) {
+        var o = document.createElement('option'); if (p[0]) o.value = p[0]; o.textContent = p[1]; catSel.appendChild(o);
       });
-    }).catch(function () { loaded = false; });
+      catSel.value = keep; return by;
+    }).catch(function () { dataP = null; return null; });
+    return dataP;
   }
+  function renderItems(c) {
+    pitems.textContent = ''; psearch.value = ''; item = ''; setCur('Choose a product', null);
+    var list = (data && data[c]) || [];
+    list.forEach(function (it) {
+      var li = document.createElement('li'), b = document.createElement('button'), img = document.createElement('img'), s = document.createElement('span');
+      b.type = 'button'; b.className = 'pick-opt';
+      img.src = it.src; img.alt = ''; img.width = 44; img.height = 44; img.loading = 'lazy';
+      s.textContent = it.title; b.appendChild(img); b.appendChild(s); li.appendChild(b); pitems.appendChild(li);
+      b.addEventListener('click', function () { item = it.title; setCur(it.title, img); setValue(); closeList(); pbtn.focus(); });
+    });
+    psearch.hidden = list.length < 10;
+    pbtn.disabled = !list.length;
+    if (!list.length) setCur(c && c !== 'Mixed / not sure yet' ? 'Products load when you are online' : (c ? 'Not needed, we will help you choose' : 'Choose a category first'), null);
+  }
+  catSel.addEventListener('focus', getData);
+  catSel.addEventListener('pointerdown', getData);
+  catSel.addEventListener('change', function () {
+    closeList(); setValue();
+    var c = catSel.value;
+    if (!c || c === 'Mixed / not sure yet') { renderItems(c); return; }
+    pbtn.disabled = true; setCur('Loading products...', null);
+    getData().then(function () { if (catSel.value === c) { renderItems(c); setValue(); } });
+  });
   psearch.addEventListener('input', function () {
-    var q = psearch.value.trim().toLowerCase(), head = null, any = false;
-    var rows = pitems.children;
-    for (var i = 0; i < rows.length; i++) {
-      var li = rows[i];
-      if (li.classList.contains('pick-head')) { li.hidden = false; continue; }
-      li.hidden = !!q && li.textContent.toLowerCase().indexOf(q) < 0;
-    }
-    for (var j = 0; j < rows.length; j++) {
-      if (!rows[j].classList.contains('pick-head')) continue;
-      var k = j + 1, vis = false;
-      while (k < rows.length && !rows[k].classList.contains('pick-head')) { if (!rows[k].hidden) vis = true; k++; }
-      rows[j].hidden = !vis;
-    }
+    var q = psearch.value.trim().toLowerCase();
+    Array.prototype.forEach.call(pitems.children, function (li) { li.hidden = !!q && li.textContent.toLowerCase().indexOf(q) < 0; });
   });
   pbtn.addEventListener('click', function () {
     var open = plist.hidden; plist.hidden = !open; pbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (open) { loadCatalog(); psearch.focus({ preventScroll: true }); }
+    if (open && !psearch.hidden) psearch.focus({ preventScroll: true });
   });
   document.addEventListener('click', function (e) { if (!e.target.closest('.picker')) closeList(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !plist.hidden) { closeList(); pbtn.focus(); } });
   document.querySelectorAll('[data-product]').forEach(function (a) {
-    a.addEventListener('click', function () { var v = a.getAttribute('data-product'); pick(v, null); });
+    a.addEventListener('click', function () { var v = a.getAttribute('data-product'); catSel.value = v; setValue(); });
   });
   if (!form) return;
   form.addEventListener('submit', function (e) {

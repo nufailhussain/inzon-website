@@ -739,3 +739,5 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .pick-opt:hover, .pick-opt:focus-visible { background: var(--paper-alt); outline: none; }
 .pick-opt img { width: 44px; height: 44px; }
 .pick-ph { width: 44px; height: 44px; border-radius: 6px; background: var(--paper-alt); display: grid; place-items: center; font-size: 1.4rem; color: var(--teal); flex: none; }
+
+.pick-btn:disabled { opacity: .6; cursor: not-allowed; }
