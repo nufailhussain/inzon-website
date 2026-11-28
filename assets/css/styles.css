@@ -699,3 +699,6 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .band-teal h2 strong { color: #e6c68a; }
 .band-teal .diamond, .band-teal .why-icon { background: rgba(230,198,138,.18); }
 .steps .step-icon, .steps .c-teal, .steps .c-pink, .steps .c-amber, .steps .c-green { color: var(--teal); }
+
+/* Whole category tile is one link: stretch the link area past the text block; the tile clips it */
+.cat-body h3 a::before { inset: -1500px -40px -40px -40px; }
