@@ -600,9 +600,9 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 
 /* Hero: the photo's own wall is extended to fill the whole hero, so the headline and description sit directly on the wall.
    Phones and tablets: text on the wall above the products. Desktop (1001px+): text on the wall at the left, products at the right. */
-.hero { position: relative; overflow: hidden; background: linear-gradient(90deg, #b4a79a, #ab9a87); }
+.hero { position: relative; overflow: hidden; background: linear-gradient(90deg, #c4b8a9, #b9a994); }
 .hero-bg { position: absolute; inset: 0; z-index: 0; display: block; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; display: block; }
+.hero-bg img { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; display: block; }
 .hero .wrap { position: relative; z-index: 1; display: block; padding-top: clamp(26px, 5vw, 48px); padding-bottom: 55vw; }
 .hero-mosaic { display: none; }
 .hero-text { display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -616,8 +616,8 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   .hero-text .hero-answer { font-size: 1rem; margin-top: 12px; }
 }
 @media (min-width: 1001px) {
-  .hero { min-height: clamp(540px, 50vw, 900px); display: flex; align-items: center; background: linear-gradient(90deg, #a3968b, #b2a18d); }
-  .hero-bg img { object-position: right bottom; }
+  .hero { min-height: clamp(540px, 50vw, 900px); display: flex; align-items: center; background: linear-gradient(90deg, #b8ad9f, #ab9c89); }
+  .hero-bg img { top: 0; width: 100%; height: 100%; object-fit: cover; object-position: right bottom; }
   .hero .wrap { width: 100%; padding-block: 40px 9%; }
   .hero-text { align-items: flex-start; text-align: left; max-width: min(36vw, 540px); }
   .hero-text h1 { font-size: clamp(2.4rem, 3.7vw, 3.6rem); max-width: 10.5em; }
