@@ -598,30 +598,23 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 #bulk-supply:target { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(233,88,127,.35); }
 .catalog-filter .filter-group-label { flex-basis: 100%; font-size: .78rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--pink, #d6336c); margin-top: 6px; }
 
-/* Mobile hero: full-bleed product photo with the headline and buttons laid over its lower part (phones only) */
+/* Phones: the wall colour runs up to the header with just the headline, and the photo sits in the lower half */
 .hero-m-photo { display: none; }
 @media (max-width: 760px) {
-  .hero { background: linear-gradient(180deg, #e6cba9 0, #e6cba9 1000px, #fff 1200px); }
-  .hero .wrap { padding-block: 0 72px; gap: 0; }
+  .hero { background: #e2c3a1; }
+  .hero .wrap { padding-block: 0; gap: 0; }
   .hero-mosaic { display: none; }
-  .hero-text { display: grid; grid-template-columns: 1fr; grid-template-rows: 120vw auto auto auto auto auto; position: relative; margin-inline: -20px; }
-  .hero-text > * { grid-column: 1; margin-inline: 20px; position: relative; z-index: 2; }
-  .hero-m-photo { display: block; grid-row: 1 / 5; margin: 0 !important; z-index: 0 !important; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; background: #e6cba9; }
-  .hero-text::before { content: ""; grid-column: 1; grid-row: 1 / 5; z-index: 1; position: relative;
-    background: linear-gradient(180deg, rgba(230,203,169,0) calc(120vw - 16vw), #e6cba9 120vw); }
-  .hero-text .eyebrow { grid-row: 2; margin-top: -4px; margin-bottom: 8px; font-size: .7rem; letter-spacing: .14em; }
-  .hero-text h1 { grid-row: 3; font-size: clamp(2rem, 9vw, 2.5rem); line-height: 1.12; letter-spacing: -.01em; }
-  .hero-text .hero-ctas { grid-row: 4; margin-top: 20px; padding-bottom: 30px; flex-wrap: nowrap; gap: 10px; }
-  .hero-text .hero-ctas .btn { border-radius: 999px; padding: .8em 1.3em; font-size: .92rem; white-space: nowrap; }
-  .hero-text .hero-ctas .btn-ghost { background: rgba(255,255,255,.8); }
-  .hero-text .hero-answer { grid-row: 5; margin-top: 24px; font-size: 1rem; }
-  .hero-text .hero-facts { grid-row: 6; }
-  .hero-text .hero-facts li { background: var(--teal-soft); }
+  .hero-text { display: flex; flex-direction: column; margin-inline: -20px; }
+  .hero-text > :not(img) { margin-inline: 20px; }
+  .hero-text .eyebrow, .hero-text .hero-answer, .hero-text .hero-ctas, .hero-text .hero-facts { display: none; }
+  .hero-text h1 { order: 1; padding-top: 34px; font-size: clamp(2.1rem, 9.4vw, 2.7rem); line-height: 1.1; letter-spacing: -.01em; }
+  .hero-m-photo { order: 2; display: block; width: 100%; height: auto; aspect-ratio: 1472 / 1760; object-fit: cover; object-position: center top; margin-top: 4px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 84%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0, #000 20%, #000 84%, transparent 100%); }
 }
 
 /* Desktop and tablet (761px and wider): same look as phones — bottle photo hero on soft grey, category photo tiles with short lines */
 @media (min-width: 761px) {
-  .hero { background: #e6cba9; position: relative; }
+  .hero { background: #e2c3a1; position: relative; }
   .hero .wrap { grid-template-columns: 1fr; padding-block: 0; }
   .hero-mosaic { display: none; }
   .hero-text { display: flex; flex-direction: column; justify-content: center; min-height: clamp(560px, 46vw, 700px); padding: 48px max(0px, calc(44vw - (100vw - 100%) / 2 + 28px)) 72px 0; }
@@ -686,5 +679,5 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .hero .eyebrow { color: #5b3f86 !important; }
 .hero .btn-ghost { border-color: #2b1d4e; color: #2b1d4e; }
 /* soft sweep from the hero into the white section below */
-.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 84px; background: linear-gradient(180deg, rgba(230,203,169,0), #fff); pointer-events: none; z-index: 1; }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 84px; background: linear-gradient(180deg, rgba(226,195,161,0), #fff); pointer-events: none; z-index: 1; }
 .hero-text > :not(img) { position: relative; z-index: 2; }
