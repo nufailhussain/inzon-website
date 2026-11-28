@@ -667,3 +667,16 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   .process-card .steps h3 { font-size: .92rem; }
   .process-card .steps p { font-size: .76rem; line-height: 1.5; }
 }
+
+/* Welcome kits heading on two lines: "Welcome kits that make" / "day one memorable" */
+.band-blue h2 span { display: inline; }
+@media (max-width: 640px) {
+  /* heading spans the full width above the text and picture */
+  .band-blue .split { padding-block: 24px; row-gap: 12px; }
+  .band-blue .split-body { display: contents; }
+  .band-blue h2 { grid-column: 1 / -1; grid-row: 1; padding: 0 16px; font-size: 1.55rem; line-height: 1.2; }
+  .band-blue .split-media { grid-column: 2; grid-row: 2 / span 3; }
+  .band-blue .split-body > p { grid-column: 1; grid-row: 2; padding: 0 12px 0 16px; }
+  .band-blue .split-body > .kit-list { grid-column: 1; grid-row: 3; padding: 0 12px 0 16px; }
+  .band-blue .split-body > div { grid-column: 1; grid-row: 4; padding: 0 12px 0 16px; }
+}
