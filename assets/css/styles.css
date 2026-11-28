@@ -745,5 +745,4 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 
 /* Footer: main office label and regional branches */
 .site-footer .office-label { font-size: .74rem; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.6); }
-.site-footer .branch-title { font-size: .74rem; text-transform: uppercase; letter-spacing: .14em; color: #d9b573; font-weight: 600; margin: 22px 0 10px; }
-.site-footer address.branch + address.branch { margin-top: 12px; }
+.site-footer address.branch { margin-top: 18px; }
