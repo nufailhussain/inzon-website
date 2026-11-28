@@ -10,7 +10,7 @@
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-7gZ/kL+CNwBavqvjssS8kNzgLf7LfmX/bytyJozoeew='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-uRsTt+qcu/YU50NX/DP2n53GaPj3ujRJpOROrZa95r8='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INZON | Corporate Gifts, Decor &amp; Branded Merchandise, Kozhikode</title>
@@ -687,6 +687,7 @@
     }).catch(function () { dataP = null; return null; });
     return dataP;
   }
+  function choose(it, img) { item = it.title; setCur(it.title, img); setValue(); }
   function renderItems(c) {
     pitems.textContent = ''; psearch.value = ''; item = ''; setCur('Choose a product', null);
     var list = (data && data[c]) || [];
@@ -695,12 +696,29 @@
       b.type = 'button'; b.className = 'pick-opt';
       img.src = it.src; img.alt = ''; img.width = 44; img.height = 44; img.loading = 'lazy';
       s.textContent = it.title; b.appendChild(img); b.appendChild(s); li.appendChild(b); pitems.appendChild(li);
-      b.addEventListener('click', function () { item = it.title; setCur(it.title, img); setValue(); closeList(); pbtn.focus(); });
+      b.addEventListener('click', function () { choose(it, img); closeList(); pbtn.focus(); });
     });
     psearch.hidden = list.length < 10;
     pbtn.disabled = !list.length;
     if (!list.length) setCur(c && c !== 'Mixed / not sure yet' ? 'Products load when you are online' : (c ? 'Not needed, we will help you choose' : 'Choose a category first'), null);
   }
+  // Arriving from a catalog item's quote link (?category=...&product=...): pre-select both fields.
+  (function () {
+    var qp = new URLSearchParams(location.search), c = qp.get('category'), p = qp.get('product');
+    if (!c) return;
+    getData().then(function () {
+      var opt = Array.prototype.filter.call(catSel.options, function (o) { return o.value === c; })[0];
+      if (!opt) return;
+      catSel.value = c; setValue();
+      if (data && data[c]) {
+        renderItems(c);
+        data[c].forEach(function (it, i) {
+          if (it.title === p) choose(it, pitems.children[i].querySelector('img'));
+        });
+      }
+      catSel.scrollIntoView({ block: 'center' });
+    });
+  })();
   catSel.addEventListener('focus', getData);
   catSel.addEventListener('pointerdown', getData);
   catSel.addEventListener('change', function () {
