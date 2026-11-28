@@ -703,5 +703,19 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 /* Whole category tile is one link: stretch the link area past the text block; the tile clips it */
 .cat-body h3 a::before { inset: -1500px -40px -40px -40px; }
 
-/* Desktop keeps Study tables beside Home and Decor; on phones and tablets it sits after Caps so the two-column grid has no gap */
-@media (min-width: 1001px) { .cat-card.cat-study { order: 1; } .cat-card.cat-late { order: 2; } }
+/* Desktop order is set below; on phones and tablets it sits after Caps so the two-column grid has no gap */
+@media (min-width: 1001px) {
+  /* Rows alternate: big + 2 small, 2 small + big, big + 2 small, 2 small + big */
+  .cat-grid > .cat-card:nth-child(1) { order: 1; }   /* Gift sets (big) */
+  .cat-grid > .cat-card:nth-child(2) { order: 2; }   /* Bottles */
+  .cat-grid > .cat-card:nth-child(3) { order: 3; }   /* Umbrellas */
+  .cat-grid > .cat-card:nth-child(4) { order: 4; }   /* T-shirts */
+  .cat-grid > .cat-card:nth-child(5) { order: 5; }   /* Pens */
+  .cat-grid > .cat-card:nth-child(9) { order: 6; }   /* Laptop bags (big) */
+  .cat-grid > .cat-card:nth-child(10) { order: 7; }  /* Wall clocks (big) */
+  .cat-grid > .cat-card:nth-child(6) { order: 8; }   /* Keychains */
+  .cat-grid > .cat-card:nth-child(7) { order: 9; }   /* Caps */
+  .cat-grid > .cat-card:nth-child(8) { order: 10; }  /* Study tables */
+  .cat-grid > .cat-card:nth-child(11) { order: 11; } /* Home & lifestyle */
+  .cat-grid > .cat-card:nth-child(12) { order: 12; } /* Decor items (big) */
+}
