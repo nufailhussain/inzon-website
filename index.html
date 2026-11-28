@@ -10,7 +10,7 @@
 <html lang="en-IN">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-eWhDEgq8n4+hr36ND84DJFFsMTjpTfievYtpcUtb1Qg='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-NwPH90b8ltyQ6VLyhwEfcVWKKYyL/1aDOcv7PTA3PoQ=' 'sha256-SOJ41Isrb3dfAiQIJgz/Ao6DT0rQ4tWRVYMws+jQTK8=' 'sha256-SPVOdt6o1Bh6VYgLuZ5DRA4v19/u3TiBsPWSvHryRLg='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INZON | Corporate Gifts, Decor &amp; Branded Merchandise, Kozhikode</title>
@@ -584,11 +584,24 @@
         <div class="field"><label for="q-company">Company name</label><input id="q-company" name="company" type="text" autocomplete="organization" required></div>
         <div class="field"><label for="q-phone">Phone / WhatsApp</label><input id="q-phone" name="phone" type="tel" autocomplete="tel" required></div>
         <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email"></div>
-        <div class="field"><label for="q-product">Product</label>
-          <select id="q-product" name="product">
-            <option value="">Choose a category</option>
-            <option>Gift sets</option><option>Bottles</option><option>Laptop bags</option><option>T-shirts &amp; polos</option><option>Engraved pens</option><option>Keychains</option><option>Caps</option><option>Umbrellas</option><option>Wall clocks</option><option>Home &amp; lifestyle</option><option>Study tables</option><option>Decor items</option><option>Mixed / not sure yet</option>
-          </select></div>
+        <div class="field picker"><label id="q-product-label">Product</label>
+          <input type="hidden" id="q-product" name="product" value="">
+          <button type="button" class="pick-btn" id="q-product-btn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="q-product-label q-product-btn"><span class="pick-cur">Choose a product</span><span class="pick-caret" aria-hidden="true"></span></button>
+          <ul class="pick-list" id="q-product-list" role="group" aria-labelledby="q-product-label" hidden>
+<li><button type="button" class="pick-opt" data-value="Gift sets"><img src="assets/img/brown-leather-wallet-keychain-pen-and-glasses-case-set.webp" alt="" width="44" height="44" loading="lazy"><span>Gift sets</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Bottles"><img src="assets/img/smart-temperature-display-bottles.webp" alt="" width="44" height="44" loading="lazy"><span>Bottles</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Umbrellas"><img src="assets/img/branded-golf-and-folding-umbrellas.webp" alt="" width="44" height="44" loading="lazy"><span>Umbrellas</span></button></li>
+<li><button type="button" class="pick-opt" data-value="T-shirts &amp; polos"><img src="assets/img/custom-printed-tshirts-and-polo.webp" alt="" width="44" height="44" loading="lazy"><span>T-shirts &amp; polos</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Engraved pens"><img src="assets/img/engraved-black-metal-pens.webp" alt="" width="44" height="44" loading="lazy"><span>Engraved pens</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Keychains"><img src="assets/img/engraved-metal-leather-wooden-keychains.webp" alt="" width="44" height="44" loading="lazy"><span>Keychains</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Caps"><img src="assets/img/embroidered-logo-black-cap.webp" alt="" width="44" height="44" loading="lazy"><span>Caps</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Study tables"><img src="assets/img/catalog/foldable-kids-study-table-and-chair-oak.webp" alt="" width="44" height="44" loading="lazy"><span>Study tables</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Laptop bags"><img src="assets/img/leather-laptop-bags-black-navy.webp" alt="" width="44" height="44" loading="lazy"><span>Laptop bags</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Wall clocks"><img src="assets/img/rose-gold-black-wall-clock.webp" alt="" width="44" height="44" loading="lazy"><span>Wall clocks</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Home &amp; lifestyle"><img src="assets/img/marble-finish-soap-dispensers.webp" alt="" width="44" height="44" loading="lazy"><span>Home &amp; lifestyle</span></button></li>
+<li><button type="button" class="pick-opt" data-value="Decor items"><img src="assets/img/catalog/gold-leaf-metal-wall-frames-set-of-three.webp" alt="" width="44" height="44" loading="lazy"><span>Decor items</span></button></li>
+<li><button type="button" class="pick-opt pick-mixed" data-value="Mixed / not sure yet"><span class="pick-ph" aria-hidden="true">+</span><span>Mixed / not sure yet</span></button></li>
+          </ul></div>
         <div class="field"><label for="q-qty">Quantity</label><input id="q-qty" name="qty" type="number" min="100" step="1" inputmode="numeric" placeholder="e.g. 250" required></div>
         <div class="field"><label for="q-date">Needed by</label><input id="q-date" name="date" type="date"></div>
         <div class="field full"><label for="q-msg">Branding and other details</label><textarea id="q-msg" name="msg" rows="3" placeholder="Logo colours, items per kit, delivery locations in Kerala"></textarea></div>
@@ -646,8 +659,25 @@
 (function () {
   var form = document.getElementById('quote-form');
   var select = document.getElementById('q-product');
+  var pbtn = document.getElementById('q-product-btn'), plist = document.getElementById('q-product-list');
+  function pick(val, thumb) {
+    select.value = val;
+    var cur = pbtn.querySelector('.pick-cur');
+    cur.textContent = val || 'Choose a product';
+    var old = pbtn.querySelector('img'); if (old) old.remove();
+    if (thumb) { var im = thumb.cloneNode(); im.removeAttribute('loading'); pbtn.insertBefore(im, cur); }
+  }
+  function closeList() { plist.hidden = true; pbtn.setAttribute('aria-expanded', 'false'); }
+  pbtn.addEventListener('click', function () {
+    var open = plist.hidden; plist.hidden = !open; pbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  plist.querySelectorAll('.pick-opt').forEach(function (b) {
+    b.addEventListener('click', function () { pick(b.getAttribute('data-value'), b.querySelector('img')); closeList(); pbtn.focus(); });
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.picker')) closeList(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !plist.hidden) { closeList(); pbtn.focus(); } });
   document.querySelectorAll('[data-product]').forEach(function (a) {
-    a.addEventListener('click', function () { if (select) select.value = a.getAttribute('data-product'); });
+    a.addEventListener('click', function () { var v = a.getAttribute('data-product'); var o = plist.querySelector('[data-value="' + v + '"]'); pick(v, o && o.querySelector('img')); });
   });
   if (!form) return;
   form.addEventListener('submit', function (e) {
